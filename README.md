@@ -22,5 +22,20 @@
                 - latency
                 - packet loss
             - failure rate/availibility
-2. 
-
+2. design the application service/components (follow below order)
+    - data storage layer (DB)
+    - service layer
+        - XXX service
+    - controller layer
+        - /api/{...}
+    - connection layer
+3. List possible bottlenecks for each layer
+    - need a load balancer?
+    - horizontal scaling DB?
+4. discuss the scalability of the design
+    - Vertical scaling: 给一台机子升级配置, 但总有个极限的
+    - Horizontal scaling: replicate server for the same service in order to serve more requests
+    - Load balancing: decide which replicate server to serve this request (least busy? most busy? round robin?)
+    - Caching
+    - Database replication
+    - Database partitioning
