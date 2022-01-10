@@ -36,6 +36,8 @@
     - Vertical scaling: 给一台机子升级配置, 但总有个极限的
     - Horizontal scaling: replicate server for the same service in order to serve more requests
     - Load balancing: decide which replicate server to serve this request (least busy? most busy? round robin?)
+        - remember a large number for request executing on server X rather than maintaining sessions or storing private IP in cookie
     - Caching
+        - needs to consider TTL (time to live)
     - Database replication
     - Database partitioning
