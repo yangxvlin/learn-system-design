@@ -38,6 +38,14 @@
     - Load balancing: decide which replicate server to serve this request (least busy? most busy? round robin?)
         - remember a large number for request executing on server X rather than maintaining sessions or storing private IP in cookie
     - Caching
-        - needs to consider TTL (time to live)
-    - Database replication
-    - Database partitioning
+        - needs to consider TTL (time to live) for GC because you can run out of thel limited space
+    - Database replication: making automatically copy of DB
+        - Master-slave
+            - a slave is a copy of the master
+            - balance read requests to slaves
+            - master can be single point of failure (solved by master slave switch)
+            - slaves can enchance read service's availibility
+        - Master-master
+            - write on one master will also be execute on other masters
+            - solve single point of failure for master-slave
+    - Database partitioning: partition DB to different servers and work as a whole
