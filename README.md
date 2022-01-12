@@ -51,5 +51,12 @@
             - write on one master will also be execute on other masters
             - solve single point of failure for master-slave
     - Database partitioning: partition DB to different servers and work as a whole
+        - Database sharding: let part of users pre-determined to be served by a small server rather than a centralised service (e.g. serve users geographically)
+            |advantage||disadvantage||
+            |---|---|---|---|
+            |High availability|one shard down -> others still work|Rebalancing data| how to make sure data are balanced through all  shards?
+            |Faster queries|small data set -> faster query speed|Joining data from multiple shards| too much small data sets -> large join times
+            |More write bandwidth|you can write data in different shards -> more write bandwidth compared to master-slave|How do you partition your data in shards?|difficult to decide which field to be stored on which shard
+            |
     - Being asynchronous
-        - use MQ to consume asynchronously
+        - use MQ to consume requets asynchronously
