@@ -74,6 +74,23 @@
 3. Its performance is good enough for the required use case, under the expected load and data volume.
 4. The system prevents any unauthorized access and abuse.
 
+||||
+|---|---|---|
+|faults|one component of the system deviating from its spec| cannot decrease to 0 -> keep fault-tolerant or resilient
+|failure|the system as a whole stops providing the required service to the user
+
+#### Hardware Faults
+硬盘坏了, 没电了, etc -> multi-machine redundancy
+#### Software Errors
+just fix bugs
+#### Human Errors
+1. write clear docs for API
+2. different sandboxs for dev, testing, prod
+3. thorough testing
+4. Set up detailed and clear monitoring, such as performance metrics and error rates.
+
+### scalability
+system’s ability to cope with increased load
 
 
 
