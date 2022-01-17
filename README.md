@@ -1,5 +1,21 @@
 # learn-system-design
 
+<!-- TOC -->
+
+- [learn-system-design](#learn-system-design)
+    - [资料](#%E8%B5%84%E6%96%99)
+    - [Design process](#design-process)
+    - [concepts](#concepts)
+        - [reliability](#reliability)
+            - [Hardware Faults](#hardware-faults)
+            - [Software Errors](#software-errors)
+            - [Human Errors](#human-errors)
+        - [scalability](#scalability)
+            - [Describing Load](#describing-load)
+            - [Describing Performance](#describing-performance)
+
+<!-- /TOC -->
+
 ## 资料
 - 帖子: 
     - https://blog.csdn.net/AuburnTigers/article/details/102601151
@@ -91,7 +107,11 @@ just fix bugs
 
 ### scalability
 system’s ability to cope with increased load
+#### Describing Load
+When we write a tweet to DB, we can wrtie to DB as usual and also maintain a timeline for each twitter post's follower so that followers do not need to query the DB to see the new tweets (just need to read prepared timeline).
 
+<img src="docs/1.png" width="50%"/>
 
+#### Describing Performance
 
 
