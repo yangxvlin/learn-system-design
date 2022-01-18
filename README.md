@@ -126,4 +126,6 @@ service level agreements (SLAs): the expected availability of a service
     - 为啥这个指标重要: the customers with the slowest requests are often those who have the most data on their accounts because they have made many purchases (most valuable cunstomer)
     - 不好搞的原因: However, reducing response times at high percentiles is difficult because they are easily affected by random events outside of your control, and the benefits are diminishing
 
+- > [注意] test 的时候要是request有dependency的话, 就可能会在server端head-of-line blocking(request都block在waiting queue里), 从而导致measurements skewed.
+
 #### Approaches for Coping with Load
