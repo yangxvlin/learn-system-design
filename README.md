@@ -137,6 +137,10 @@ service level agreements (SLAs): the expected availability of a service
 needs to consider the tradeoff: single machine is always better than distributted small machine but it can be expensive if the machine is too powerful.
 
 ### Maintainability
-
-
+three design principles for software systems:
+|||
+|---|---|
+|Operability|Make it easy for operations teams to keep the system running smoothly.
+|Simplicity|Make it easy for new engineers to understand the system
+|Evolvability (extensibility, modifiability, or plasticity)|Make it easy for engineers to make changes to the system in the future (adapting it for unanticipated use cases as requirements change)
 
