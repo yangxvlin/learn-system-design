@@ -129,3 +129,14 @@ service level agreements (SLAs): the expected availability of a service
 - > [注意] test 的时候要是request有dependency的话, 就可能会在server端head-of-line blocking(request都block在waiting queue里), 从而导致measurements skewed.
 
 #### Approaches for Coping with Load
+|||
+|---|---|
+|vertical scaling|moving to a more powerful machine  
+|horizontal scaling|distributing the load across multiple smaller machines
+
+needs to consider the tradeoff: single machine is always better than distributted small machine but it can be expensive if the machine is too powerful.
+
+### Maintainability
+
+
+
