@@ -113,5 +113,17 @@ When we write a tweet to DB, we can wrtie to DB as usual and also maintain a tim
 <img src="docs/1.png" width="50%"/>
 
 #### Describing Performance
+|processing system|metric||
+|---|---|---|
+|batch (Hadoop)|throughput|#records we can process per second
+|online batch systems|service’s response time|the time between a client sending a request and receiving a response<br/> - is what clients can see while latency is the duration that a request is waiting to be handled
+|stream (Flink)|n/a
 
+service level objectives (SLOs): the expected performance of a service  
+service level agreements (SLAs): the expected availability of a service
+- both are percentile metric
+- 99th percentile for avg response time < 1s can imply
+    - 为啥这个指标重要: the customers with the slowest requests are often those who have the most data on their accounts because they have made many purchases (most valuable cunstomer)
+    - 不好搞的原因: However, reducing response times at high percentiles is difficult because they are easily affected by random events outside of your control, and the benefits are diminishing
 
+#### Approaches for Coping with Load
