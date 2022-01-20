@@ -144,3 +144,17 @@ three design principles for software systems:
 |Simplicity|Make it easy for new engineers to understand the system
 |Evolvability (extensibility, modifiability, or plasticity)|Make it easy for engineers to make changes to the system in the future (adapting it for unanticipated use cases as requirements change)
 
+## Data Models and Query Languages
+### Relational Model v.s. Document Model
+- Why NoSQL databases?
+    1. A need for greater scalability than relational databases can easily achieve, including very large datasets or very high write throughput
+    2. A widespread preference for free and open source software over commercial database products
+    3. Specialized query operations that are not well supported by the relational model
+    4. Frustration with the restrictiveness of relational schemas, and a desire for a more dynamic and expressive data model
+- Problem of relational model (impedance mismatch)
+    - impedance mismatch: 关系型数据库总归需要orm framework来作为一个layer, 从而使得application code可以访问到数据
+- Many-to-One and Many-to-Many Relationships
+
+
+
+
