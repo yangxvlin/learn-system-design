@@ -154,7 +154,10 @@ three design principles for software systems:
 - Problem of relational model (impedance mismatch)
     - impedance mismatch: 关系型数据库总归需要orm framework来作为一个layer, 从而使得application code可以访问到数据
 - Many-to-One and Many-to-Many Relationships
-
+    - ||advantage|disadvantage|
+      |---|---|---|
+      |Using an id for row|it has no meaning to humans, it never needs to change: the ID can remain the same, even if the information it identifies changes|1. incurs write overheads<br/>2. risks inconsistencies (where some copies of the information are updated but others aren’t)
+    - Need to consider normalization (范式化)
 
 
 
