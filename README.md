@@ -168,5 +168,24 @@ three design principles for software systems:
   |data accessibility||bad: difficult to get second position in user's position list because you need to load the whole user
   |join support||(not a problem if many-to-many scenario not needed) many-to-many relationship case -> more complex application code and worse performance
   |highly interconnected data|acceptable||acceptable
-  |
+  |Schema flexibility (hard to say good/bad)|schemaless if data stored in json/xml|better supported
+  |Data locality for queries|1. Google’s Spanner database offers the same locality properties<br/>2. Oracle: multi-table index cluster tables<br/>3. column-family concept in the Bigtable data model (used in Cassandra and HBase)|- advantage: only applies if you need large parts of the document at the same time -> data are gatheredto be loaded locally together regardless of which part of the document needed<br/>- disadvantage: documents always encoded (json/xml/MongoDB’s BSON) -> modification/read requires to load the whole document
+  ||
+### relational and document databases are becoming more similar over time
+|relational DB|data model support|
+|---|---|
+|Most relational database systems (other than MySQL)|supported XML since the mid-2000s so that have a document-like way of DB
+|PostgreSQL since version 9.3|support for JSON documents
+|MySQL since version 5.7|support for JSON documents
+|
 
+|document DB||
+|---|---|
+|RethinkDB|supports relational-like joins in its query language
+|some MongoDB drivers|automatically resolve database references (effectively performing a client-side join, although this is likely to be slower than a join performed in the database since it requires additional network round-trips and is less optimized)
+
+### summary
+- If your application has mostly one-to-many relationships (tree-structured data) || no relationships between records, 
+    - the document model is appropriate.
+- if many-to-many relationships are very common || the connections within your data become more complex
+    - the graph model is appropriate
