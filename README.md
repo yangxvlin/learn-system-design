@@ -13,6 +13,10 @@
         - [scalability](#scalability)
             - [Describing Load](#describing-load)
             - [Describing Performance](#describing-performance)
+            - [Approaches for Coping with Load](#approaches-for-coping-with-load)
+        - [Maintainability](#maintainability)
+    - [Data Models and Query Languages](#data-models-and-query-languages)
+        - [Relational Model v.s. Document Model](#relational-model-vs-document-model)
 
 <!-- /TOC -->
 
@@ -158,6 +162,11 @@ three design principles for software systems:
       |---|---|---|
       |Using an id for row|it has no meaning to humans, it never needs to change: the ID can remain the same, even if the information it identifies changes|1. incurs write overheads<br/>2. risks inconsistencies (where some copies of the information are updated but others aren’t)
     - Need to consider normalization (范式化)
-
-
+- ||Relational DB|Document DB|Graph DB
+  |---|---|---|---|
+  |simpler application code|uses forengin key for multiple tables -> lots of useless schema & complicated code|the application has a document-like structure (1-to-many relationship)
+  |data accessibility||bad: difficult to get second position in user's position list because you need to load the whole user
+  |join support||(not a problem if many-to-many scenario not needed) many-to-many relationship case -> more complex application code and worse performance
+  |highly interconnected data|acceptable||acceptable
+  |
 
