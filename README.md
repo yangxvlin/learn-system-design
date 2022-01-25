@@ -189,3 +189,21 @@ three design principles for software systems:
     - the document model is appropriate.
 - if many-to-many relationships are very common || the connections within your data become more complex
     - the graph model is appropriate
+
+## Storage and Retrieval
+### index data structure
+#### using index
+||advantage|disadvantage|
+|---|---|---|
+|index|can speed up read queries|every index slows down writes (you also need to update index)
+#### comparison
+||advantage|disadvantage|
+|---|---|---|
+|hash index|1. fast to check existance O(1)|1. The hash table must fit in memory -> needs to access disk a lot<br/>2. Range queries are not efficient -> B+ tree
+|
+
+
+
+
+
+
