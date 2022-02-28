@@ -17,6 +17,15 @@
         - [Maintainability](#maintainability)
     - [Data Models and Query Languages](#data-models-and-query-languages)
         - [Relational Model v.s. Document Model](#relational-model-vs-document-model)
+        - [relational and document databases are becoming more similar over time](#relational-and-document-databases-are-becoming-more-similar-over-time)
+        - [summary](#summary)
+    - [Storage and Retrieval](#storage-and-retrieval)
+        - [index data structure](#index-data-structure)
+            - [using index](#using-index)
+            - [comparison](#comparison)
+            - [hash index](#hash-index)
+            - [sorted string table SSTable and LSM tree](#sorted-string-table-sstable-and-lsm-tree)
+            - [B-tree](#b-tree)
 
 <!-- /TOC -->
 
@@ -200,10 +209,32 @@ three design principles for software systems:
 ||advantage|disadvantage|
 |---|---|---|
 |hash index|1. fast to check existance O(1)|1. The hash table must fit in memory -> needs to access disk a lot<br/>2. Range queries are not efficient -> B+ tree
-|
+|SSTable|Goog big data table paper<br/>1. LevelDB<br/>2. RocksDB<br/>3. Cassandra<br/>4. HBase
+|LSM Tree|1. sorted keys -> support range query<br/>2. sequential keys by disk writes during merging -> high write throughput|1. slow to check not exist -> bloom filter
+|B-tree|1. small amount of pages loaded from disk for one search because search is O(log n)|
 
+#### hash index
+每个file都是包含多个{key: value}的data file segment
 
+所以需要compaction: 将每一个file里面重复的key更新为不重复的且value = 最新的value
 
+#### sorted string table (SSTable) and LSM tree
+相较于hash index每个data file segment的key都sorted, 所以可以快速的定位到key
 
+- In memory: AVL tree/red-black tree
+- Disk: data log segment
+- Cash recovery: append only file
 
+Considering merge: LSM (Log-structured merge) tree = keeping a cascade of SSTable **<u>merged in background</u>**
+||size-tiered compaction|leveled compaction|
+|---|---|---|
+|LevelDB||Y
+|RocksDB||Y
+|HBase|Y
+|Cassandra|Y|Y
 
+#### B-tree
+<img src="docs/2.png" width="50%"/>
+
+ACID property for problem like crash recovery
+- concurrency control techniques
