@@ -213,6 +213,14 @@ three design principles for software systems:
 |LSM Tree|1. sorted keys -> support range query<br/>2. sequential keys by disk writes during merging -> high write throughput|1. slow to check not exist -> bloom filter
 |B-tree|1. small amount of pages loaded from disk for one search because search is O(log n)|
 
+||LSM-Tree|B-Tree
+|---|---|---|
+|write-heavy application|**lower write amplification (#disk writes w.r.t. DB write operation)**|requires 2 times (undo log + disk page write)
+|quert stability|can be highly influences compaction operation|**stable for B+**
+|key existance|same key in different segment files|**unique key in DB**
+|different workload performance (really depends on practice)||**good**
+|
+
 #### hash index
 每个file都是包含多个{key: value}的data file segment
 
