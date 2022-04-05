@@ -3,7 +3,7 @@
 <!-- TOC -->
 
 - [learn-system-design](#learn-system-design)
-    - [资料](#%E8%B5%84%E6%96%99)
+    - [资料](#资料)
     - [Design process](#design-process)
     - [concepts](#concepts)
         - [reliability](#reliability)
@@ -24,8 +24,10 @@
             - [using index](#using-index)
             - [comparison](#comparison)
             - [hash index](#hash-index)
-            - [sorted string table SSTable and LSM tree](#sorted-string-table-sstable-and-lsm-tree)
+            - [sorted string table (SSTable) and LSM tree](#sorted-string-table-sstable-and-lsm-tree)
             - [B-tree](#b-tree)
+        - [Transaction Processing or Analytics?](#transaction-processing-or-analytics)
+            - [OLTP engine type](#oltp-engine-type)
 
 <!-- /TOC -->
 
@@ -246,3 +248,25 @@ Considering merge: LSM (Log-structured merge) tree = keeping a cascade of SSTabl
 
 ACID property for problem like crash recovery
 - concurrency control techniques
+
+### Transaction Processing or Analytics?
+- OLTP: Online Transaction Processing
+- OLAP: Online Analytical Processing
+
+|diff|OLTP|OLAP/Data_warehouse|
+|---|---|---|
+|Main read pattern| Small number of records per query, fetched by key| Aggregate over large number of records
+|Main write pattern| Random-access, low-latency writes from user input| Bulk import (ETL) or event stream
+|Primarily used by| End user/customer, via web application<br/>- large volume of requests each with small amount of records |Internal analyst, for decision support<br/>- small volume of requests each with large amount of records scanned in a short time
+|What data represents| Latest state of data (current point in time)| History of events that happened over time
+|Dataset size| Gigabytes to terabytes| Terabytes to petabytes
+|Bottleneck|Disk seek time<br/>can be solved by: index|Disk bandwidth<br/>can be solved by: column storage to encode data "correctly" (index is not important because you are scanning disk sequentially)
+
+<img src="docs/3.png" width="50%"/>
+
+#### OLTP engine type
+||||
+|---|---|---|
+|log-structured|only permits appending to files and deelte outdated files|SSTable, LSM-Tree, LevelDB, Cassandra, HBase, Lucene, mmm
+|update-in-place|treat disk as a set of fixed size of modifiable pages|B-tree
+
